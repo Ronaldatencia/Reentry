@@ -22,10 +22,10 @@
   .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric{min-height:62px;padding:9px 10px}.metric strong{font-size:18px}.metric span{font-size:11px}
   .panel{border-radius:8px;overflow:hidden}.head,.filters{padding:12px;align-items:flex-start}.head{display:grid;grid-template-columns:1fr auto}.filters{display:grid}.filter{min-width:0;width:100%}
   .tabs{display:flex;overflow-x:auto;flex-wrap:nowrap;padding:10px 12px}.tab{flex:0 0 auto;min-height:32px;font-size:12px}
-  .table{overflow:visible}.table table{min-width:0;width:100%;display:block}.table thead{display:none}.table tbody{display:grid;gap:10px;padding:10px;background:#fbfcfb}.table tr{display:grid;background:white;border:1px solid var(--line);border-radius:8px;overflow:hidden}.table td{display:grid;grid-template-columns:minmax(96px,42%) minmax(0,1fr);gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px}.table td:last-child{border-bottom:0}.table td:before{content:attr(data-label);color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase}.row{justify-content:flex-start}.row button{min-height:34px}.modalRoot{padding:10px;align-items:flex-start}.modal{max-height:calc(100vh - 20px);margin-top:0}.modalHead,.modalFoot{padding:12px}.modalBody{grid-template-columns:1fr;padding:12px;gap:10px}.toast{left:12px;right:12px;bottom:12px;text-align:center}
+  .table{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.table table{min-width:760px;width:100%;display:table}.table thead{display:table-header-group}.table tbody{display:table-row-group;padding:0;background:transparent}.table tr{display:table-row;background:transparent;border:0;border-radius:0;overflow:visible}.table th,.table td{white-space:nowrap}.table td{display:table-cell;padding:11px 12px;border-bottom:1px solid var(--line);font-size:13px}.table td:before{content:none}.row{justify-content:flex-start;flex-wrap:nowrap}.row button{min-height:34px}.modalRoot{padding:10px;align-items:flex-start}.modal{max-height:calc(100vh - 20px);margin-top:0}.modalHead,.modalFoot{padding:12px}.modalBody{grid-template-columns:1fr;padding:12px;gap:10px}.toast{left:12px;right:12px;bottom:12px;text-align:center}
 }
 @media(max-width:420px){
-  .nav button{min-width:68px}.table td{grid-template-columns:1fr;gap:4px}.table td:before{font-size:10px}.actions .ghost{padding:0 10px}
+  .nav button{min-width:68px}.actions .ghost{padding:0 10px}
 }
 @media(max-width:340px){.metrics{grid-template-columns:1fr}}
 
