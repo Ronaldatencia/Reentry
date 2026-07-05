@@ -6,6 +6,14 @@ App web para administrar renta diaria de vehiculos, ingresos, gastos, deudas, co
 
 Abre `index.html` en el navegador o sirve la carpeta con cualquier servidor local.
 
+## Estructura del proyecto
+
+- `index.html`: estructura base de la aplicacion.
+- `assets/css/styles.css`: estilos visuales y reglas responsive.
+- `assets/js/app.js`: logica de interfaz, estado local y sincronizacion.
+- `api/sheets.js`: puente de Vercel hacia Apps Script.
+- `apps-script/Code.gs`: backend que lee y escribe en Google Sheets.
+
 ## Conectar Google Sheets como backend
 
 1. Abre el libro de Google Sheets.
