@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reentry - Gastos de Flota</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed-variant": "#0b513d",
+                "primary-container": "#064e3b",
+                "outline": "#707974",
+                "surface-dim": "#d8dadc",
+                "surface-bright": "#f7f9fb",
+                "tertiary": "#1f2f43",
+                "primary-fixed": "#b0f0d6",
+                "error": "#ba1a1a",
+                "primary": "#003527",
+                "on-primary-container": "#80bea6",
+                "tertiary-fixed": "#d3e4fe",
+                "on-error": "#ffffff",
+                "on-surface": "#191c1e",
+                "surface-tint": "#2b6954",
+                "on-tertiary-container": "#a2b2cb",
+                "tertiary-fixed-dim": "#b7c8e1",
+                "on-surface-variant": "#404944",
+                "secondary": "#855300",
+                "on-secondary-container": "#684000",
+                "surface-container-highest": "#e0e3e5",
+                "secondary-fixed-dim": "#ffb95f",
+                "surface": "#f7f9fb",
+                "secondary-container": "#fea619",
+                "outline-variant": "#bfc9c3",
+                "on-primary-fixed": "#002117",
+                "surface-container-high": "#e6e8ea",
+                "on-secondary-fixed-variant": "#653e00",
+                "inverse-primary": "#95d3ba",
+                "on-tertiary-fixed-variant": "#38485d",
+                "on-secondary-fixed": "#2a1700",
+                "on-background": "#191c1e",
+                "on-error-container": "#93000a",
+                "surface-variant": "#e0e3e5",
+                "surface-container-low": "#f2f4f6",
+                "surface-container": "#eceef0",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-container": "#35455a",
+                "inverse-on-surface": "#eff1f3",
+                "on-primary": "#ffffff",
+                "on-secondary": "#ffffff",
+                "error-container": "#ffdad6",
+                "background": "#f7f9fb",
+                "secondary-fixed": "#ffddb8",
+                "on-tertiary-fixed": "#0b1c30",
+                "primary-fixed-dim": "#95d3ba",
+                "inverse-surface": "#2d3133",
+                "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "sidebar-width": "260px",
+                "lg": "24px",
+                "md": "16px",
+                "base": "4px",
+                "xl": "40px",
+                "sm": "8px",
+                "container-max": "1440px",
+                "xs": "4px"
+            },
+            "fontFamily": {
+                "body-sm": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "data-mono": ["JetBrains Mono"],
+                "label-md": ["Hanken Grotesk"],
+                "headline-sm": ["Hanken Grotesk"],
+                "body-md": ["Hanken Grotesk"],
+                "title-lg": ["Hanken Grotesk"],
+                "headline-md": ["Hanken Grotesk"],
+                "headline-md-mobile": ["Hanken Grotesk"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            border-left: 4px solid #fea619; /* Gold border from style guidance */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-sidebar-width fixed left-0 top-0 bg-primary z-40 transition-all duration-300 ease-in-out shadow-md">
+<div class="px-md py-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-secondary-container">Reentry Fleet</h1>
+</div>
+<nav class="flex flex-col flex-1 gap-base">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-body-md text-body-md">Vehicles</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Drivers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Income</span>
+</a>
+<!-- Active Tab: Expenses -->
+<a class="flex items-center gap-md px-md py-sm bg-primary-fixed-dim text-on-primary-fixed border-l-4 border-secondary-container" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md text-body-md">Expenses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Documents</span>
+</a>
+</nav>
+<div class="p-md mt-auto">
+<div class="flex items-center gap-sm p-sm rounded-xl bg-primary-container/30">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold">
+                    JD
+                </div>
+<div class="overflow-hidden">
+<p class="text-on-primary font-title-lg text-sm truncate">Juan Delgado</p>
+<p class="text-on-primary-container text-xs truncate">Administrador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar (Mobile & Desktop) -->
+<header class="fixed top-0 right-0 left-0 md:left-[260px] h-16 bg-surface-container-lowest flex justify-between items-center px-md z-30 border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Gastos</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="hidden md:block h-8 w-px bg-outline-variant mx-2"></div>
+<button class="hidden md:flex items-center gap-sm bg-primary text-on-primary px-md py-2 rounded-lg font-title-lg text-sm shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Nuevo Gasto
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 pb-24 md:pb-lg md:pl-[284px] px-md max-w-container-max mx-auto min-h-screen">
+<!-- Quick Stats Bento-ish Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div>
+<span class="text-on-surface-variant font-label-md text-label-md">TOTAL MES</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-base">$12,450.00</h3>
+</div>
+<div class="flex items-center gap-xs mt-md text-error">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs font-medium">+12% vs mes anterior</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">COMBUSTIBLE</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-base">$8,200.00</h3>
+<div class="w-full bg-surface-container mt-md h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full w-[65%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">MANTENIMIENTO</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-base">$3,150.00</h3>
+<div class="w-full bg-surface-container mt-md h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[25%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm flex items-center justify-center border-dashed border-2 text-on-surface-variant cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="text-center">
+<span class="material-symbols-outlined text-headline-md">receipt</span>
+<p class="font-label-md text-label-md mt-base">Subir Factura</p>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md mb-md flex flex-wrap items-center justify-between gap-md">
+<div class="flex flex-wrap items-center gap-sm">
+<span class="text-on-surface-variant font-label-md text-label-md mr-md">FILTRAR POR:</span>
+<button class="px-md py-1.5 rounded-full bg-primary-container text-on-primary-container text-xs font-semibold">Todo</button>
+<button class="px-md py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold hover:bg-surface-container-highest transition-colors">Combustible</button>
+<button class="px-md py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold hover:bg-surface-container-highest transition-colors">Mantenimiento</button>
+<button class="px-md py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold hover:bg-surface-container-highest transition-colors">Limpieza</button>
+<button class="px-md py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-semibold hover:bg-surface-container-highest transition-colors">Otros</button>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-lg text-xs py-2 pl-9 pr-md w-full md:w-64 focus:ring-1 focus:ring-primary" placeholder="Buscar placa o concepto..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Expenses Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container text-on-surface-variant">
+<tr>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider">Fecha</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider">Vehículo</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider">Categoría</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider">Concepto</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider text-right">Valor</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider text-center">Estado</th>
+<th class="px-md py-3 font-label-md text-label-md uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">15 Oct, 2023</p>
+<p class="text-[10px] text-on-surface-variant">10:30 AM</p>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">ABC-1234</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="flex items-center gap-xs text-xs font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                                    Combustible
+                                </span>
+</td>
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Carga Diesel Premium - Gasolinera Shell</p>
+</td>
+<td class="px-md py-4 text-right">
+<p class="font-title-lg text-sm text-primary font-bold">$125.50</p>
+</td>
+<td class="px-md py-4">
+<div class="flex justify-center">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-tight">Pagado</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">14 Oct, 2023</p>
+<p class="text-[10px] text-on-surface-variant">03:45 PM</p>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">directions_car</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">XYZ-9876</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="flex items-center gap-xs text-xs font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                                    Mantenimiento
+                                </span>
+</td>
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Cambio de aceite y filtros (50k km)</p>
+</td>
+<td class="px-md py-4 text-right">
+<p class="font-title-lg text-sm text-primary font-bold">$450.00</p>
+</td>
+<td class="px-md py-4">
+<div class="flex justify-center">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold uppercase tracking-tight">Pendiente</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">12 Oct, 2023</p>
+<p class="text-[10px] text-on-surface-variant">09:15 AM</p>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">DEF-5678</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="flex items-center gap-xs text-xs font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                    Limpieza
+                                </span>
+</td>
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Lavado completo y desinfección</p>
+</td>
+<td class="px-md py-4 text-right">
+<p class="font-title-lg text-sm text-primary font-bold">$45.00</p>
+</td>
+<td class="px-md py-4">
+<div class="flex justify-center">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-tight">Pagado</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">10 Oct, 2023</p>
+<p class="text-[10px] text-on-surface-variant">05:20 PM</p>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">directions_bus</span>
+</div>
+<span class="font-data-mono text-data-mono text-on-surface">GHI-4321</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="flex items-center gap-xs text-xs font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                    Otros
+                                </span>
+</td>
+<td class="px-md py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Peajes y parqueo - Viaje Interprovincial</p>
+</td>
+<td class="px-md py-4 text-right">
+<p class="font-title-lg text-sm text-primary font-bold">$22.75</p>
+</td>
+<td class="px-md py-4">
+<div class="flex justify-center">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-tight">Pagado</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-md py-4 flex items-center justify-between bg-surface-container-low border-t border-outline-variant">
+<span class="text-on-surface-variant text-xs">Mostrando 1-10 de 156 gastos</span>
+<div class="flex items-center gap-sm">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="text-xs font-bold px-2">1</span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile FAB -->
+<button class="md:hidden fixed right-md bottom-20 bg-secondary-container text-on-secondary-container w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-md py-2 z-50 rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Income</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-md text-label-md">More</span>
+</a>
+</nav>
+<!-- Success Toast (Interaction Placeholder) -->
+<div class="fixed bottom-24 right-md bg-inverse-surface text-inverse-on-surface px-lg py-md rounded-lg shadow-2xl translate-y-32 opacity-0 transition-all duration-300 z-[100] flex items-center gap-md" id="toast">
+<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+<span class="text-body-sm font-medium">Gasto registrado correctamente.</span>
+</div>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = '', 100);
+            });
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

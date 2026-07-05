@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reentry Fleet - Vehículos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active-indicator {
+            box-shadow: inset 4px 0 0 0 #fea619;
+        }
+        /* Custom scrollbar for data-heavy views */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bfc9c3; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #707974; }
+    </style>
+<!-- Insert Tailwind Config Verbatim -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#0b513d",
+                      "primary-container": "#064e3b",
+                      "outline": "#707974",
+                      "surface-dim": "#d8dadc",
+                      "surface-bright": "#f7f9fb",
+                      "tertiary": "#1f2f43",
+                      "primary-fixed": "#b0f0d6",
+                      "error": "#ba1a1a",
+                      "primary": "#003527",
+                      "on-primary-container": "#80bea6",
+                      "tertiary-fixed": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "surface-tint": "#2b6954",
+                      "on-tertiary-container": "#a2b2cb",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-surface-variant": "#404944",
+                      "secondary": "#855300",
+                      "on-secondary-container": "#684000",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "surface": "#f7f9fb",
+                      "secondary-container": "#fea619",
+                      "outline-variant": "#bfc9c3",
+                      "on-primary-fixed": "#002117",
+                      "surface-container-high": "#e6e8ea",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "inverse-primary": "#95d3ba",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "on-secondary-fixed": "#2a1700",
+                      "on-background": "#191c1e",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container": "#eceef0",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#35455a",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "background": "#f7f9fb",
+                      "secondary-fixed": "#ffddb8",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "primary-fixed-dim": "#95d3ba",
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "260px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xl": "40px",
+                      "sm": "8px",
+                      "container-max": "1440px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "data-mono": ["JetBrains Mono"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "title-lg": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "headline-md-mobile": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "data-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Desktop Navigation Drawer -->
+<aside class="hidden md:flex flex-col h-full w-sidebar-width fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-md z-50">
+<div class="px-md py-xl">
+<span class="font-headline-md text-headline-md font-bold text-secondary-container">Reentry Fleet</span>
+</div>
+<nav class="flex flex-col gap-xs mt-md flex-1">
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-fixed-dim text-on-primary-fixed border-l-4 border-secondary-container transition-all duration-300" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-body-md text-body-md">Vehículos</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Drivers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Income</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md text-body-md">Expenses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Documents</span>
+</a>
+</nav>
+<div class="p-md mt-auto">
+<div class="bg-primary-container p-sm rounded-xl flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-on-primary-container truncate">Admin Reentry</p>
+<p class="text-[10px] text-on-primary-container opacity-60">Fleet Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Mobile Top AppBar -->
+<header class="md:hidden flex justify-between items-center px-md w-full h-16 bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-40">
+<button class="text-primary"><span class="material-symbols-outlined">menu</span></button>
+<h1 class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary">Reentry</h1>
+<button class="text-primary"><span class="material-symbols-outlined">notifications</span></button>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar-width min-h-screen pb-20 md:pb-lg">
+<!-- Header Section -->
+<div class="p-md md:p-lg flex flex-col md:flex-row md:items-center justify-between gap-md border-b border-outline-variant bg-surface-container-lowest">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Vehículos</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gestión centralizada de la flota de transporte.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-body-md">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary font-body-sm text-body-sm w-full md:w-64 transition-all" placeholder="Buscar por placa o marca..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl flex items-center gap-sm hover:bg-on-primary-fixed-variant transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-md text-label-md uppercase">Nuevo Vehículo</span>
+</button>
+</div>
+</div>
+<!-- Filter Stats Bar (Bento style) -->
+<div class="p-md md:p-lg grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-primary-fixed rounded-lg text-on-primary-fixed"><span class="material-symbols-outlined text-[20px]">directions_car</span></span>
+<span class="font-label-md text-label-md text-primary">+2 esta sem.</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Total Flota</p>
+<p class="font-headline-md text-headline-md text-on-surface">42</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-on-primary-container/20 rounded-lg text-primary"><span class="material-symbols-outlined text-[20px]">check_circle</span></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Activos</p>
+<p class="font-headline-md text-headline-md text-on-surface">35</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-secondary-container/20 rounded-lg text-secondary"><span class="material-symbols-outlined text-[20px]">build</span></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">En Taller</p>
+<p class="font-headline-md text-headline-md text-on-surface">4</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-error-container/40 rounded-lg text-error"><span class="material-symbols-outlined text-[20px]">block</span></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Inactivos</p>
+<p class="font-headline-md text-headline-md text-on-surface">3</p>
+</div>
+</div>
+<!-- Catalog Section -->
+<div class="px-md md:px-lg">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Vehículo</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Placa</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Conductor</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Estado</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Tarifa Diaria</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex-shrink-0 bg-center bg-cover border border-outline-variant" data-alt="A realistic studio photo of a white commercial van, Ford Transit style, on a clean neutral background. The lighting is bright and professional, highlighting the modern lines of the vehicle. Part of a corporate fleet management interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyib6pslHq2PEvNul2LoJ67nOHhd1-2Lv3jnqKdU0ESRpeLVgbk4LNAdhIyTH3DARO9ontUT3wmiCJ6outZPe0KmoMUoLO5CLo0qK6uHk9glZi8O7NeWQYDYXCaJjd0Tty2ZvZ4_qmqAmoEC7evV3MKGzuvgxT2Cg5cY9w1fWQTis8uAiiEgUaf1oke1i8sMIJfKYXwMC0_AY3cfKmuW_qKZBzdG0n4LvhSzP06n9Y629B2szbzIQ8W5YQtsgGnjQsPPYyNmTxDh0')">
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-primary">Toyota Hilux</p>
+<p class="text-[12px] text-on-surface-variant">Pick-up 4x4 / 2023</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="bg-on-surface text-surface font-data-mono text-data-mono px-2 py-1 rounded border-2 border-outline uppercase">ABC-123</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-[10px]">RA</div>
+<span class="font-body-sm text-body-sm">Ricardo Arjona</span>
+</div>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container animate-pulse"></span>
+                                        Activo
+                                    </span>
+</td>
+<td class="p-md font-data-mono text-data-mono text-on-surface">$120.00</td>
+<td class="p-md text-right">
+<button class="text-primary hover:bg-primary-container/20 p-2 rounded-full transition-all group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex-shrink-0 bg-center bg-cover border border-outline-variant" data-alt="A sleek profile shot of a modern heavy-duty cargo truck parked in a bright, organized logistics yard. Light blue sky in the background, professional corporate commercial photography style with sharp focus and natural sunlight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkDphsPe20gSCdGig8ehYU4m7Ss4pZJu_ybsrTUeUqRg8ECF31dJ6OrWGRr1PEkqJ3JTjXAsmTQW23tlu7H21ec3TJOkjb0EYY70aLVUh_vT7ZpqMg4mDXzRKlmuQgHyp0Uh_XgPoW5iGEMMLXWTi7xAf77My55vlpO8g832SdPD_XfJt6CgUMCN8KqmeoeBRBm4a9PRNSi7IYnbP10-V3-gOtpEsfFPD1gaD5rIh3g4B6sDQw1dLvrPLU2uh5Si0sKtgA5tUINNQ')">
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-primary">Mercedes Sprinter</p>
+<p class="text-[12px] text-on-surface-variant">Cargo Van / 2022</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="bg-on-surface text-surface font-data-mono text-data-mono px-2 py-1 rounded border-2 border-outline uppercase">FGT-982</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-[10px]">LM</div>
+<span class="font-body-sm text-body-sm">Luis Miguel</span>
+</div>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/20 text-secondary text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                        Taller
+                                    </span>
+</td>
+<td class="p-md font-data-mono text-data-mono text-on-surface">$85.50</td>
+<td class="p-md text-right">
+<button class="text-primary hover:bg-primary-container/20 p-2 rounded-full transition-all group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex-shrink-0 bg-center bg-cover border border-outline-variant" data-alt="A high-angle photo of a modern silver sedan vehicle, designed for executive transport, parked on a clean asphalt surface. Bright, airy corporate lighting style with subtle reflections on the car's body." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJ0-MTooH2o4eamOeQ1Ht1atIIy_rRcX7W64Qxl2FLBRDNDw1zzktGbo1yqkzkEBcKaHUFPv7bdTy2_8CC1LAjKwdEXpsKgGYDzPy-txB9RF1L8hgKyyIMj0hMWs--4OW-9jwcYYJ9HG_ME_SNyRSxeI2XIpMjGqK85S_H6r2XcPXrPyiYshMcZX43I9YpbnqplzWyOcBVHhnUIWkdJzR7ZJuS1kjH7caQ8_Kd2VNEVsAohiv1CsF-2MDmOGoEbLIW17Yf1M26wjU')">
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-primary">Chevrolet S10</p>
+<p class="text-[12px] text-on-surface-variant">Mid-size Pick-up / 2021</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="bg-on-surface text-surface font-data-mono text-data-mono px-2 py-1 rounded border-2 border-outline uppercase">XRT-445</span>
+</td>
+<td class="p-md">
+<span class="text-outline italic font-body-sm text-body-sm">No asignado</span>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+                                        Inactivo
+                                    </span>
+</td>
+<td class="p-md font-data-mono text-data-mono text-on-surface">$95.00</td>
+<td class="p-md text-right">
+<button class="text-primary hover:bg-primary-container/20 p-2 rounded-full transition-all group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex-shrink-0 bg-center bg-cover border border-outline-variant" data-alt="A clean, industrial-style photo of a white commercial box truck used for local deliveries. Parked against a minimalist grey warehouse wall under bright, even daylight. High clarity and corporate aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfqcuUBmSgUm69H2CqX6XWvg6ltLUayjW0Tqa79SYMoxYXeVD-PxAQmfYIZ21v32Oj5xCrq1947kEvmgM7P0czumrKMbo0HqYlDrXR6mRlBOdxMzpqLdWRxQekewR-xd4KGVbW078vos9cUBdY-bjeaShsZ9RhKf8gJZYeIQAzHNER6mhFlEjdFg6ajjZ7hmWKeLhJ6uFWxxHa7OEKn52zRqv_XqqMxRG4kk6GieA1MMPIq78bXYEaI5KvZU8cTUPVYawcmac-j24')">
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-primary">Hino 300 Series</p>
+<p class="text-[12px] text-on-surface-variant">Light Truck / 2024</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="bg-on-surface text-surface font-data-mono text-data-mono px-2 py-1 rounded border-2 border-outline uppercase">PLK-001</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold text-[10px]">SR</div>
+<span class="font-body-sm text-body-sm">Shakira Ripoll</span>
+</div>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container animate-pulse"></span>
+                                        Activo
+                                    </span>
+</td>
+<td class="p-md font-data-mono text-data-mono text-on-surface">$210.00</td>
+<td class="p-md text-right">
+<button class="text-primary hover:bg-primary-container/20 p-2 rounded-full transition-all group-hover:scale-110">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md bg-surface-container-low flex items-center justify-between">
+<p class="font-label-md text-label-md text-on-surface-variant">Mostrando 1-10 de 42 resultados</p>
+<div class="flex items-center gap-xs">
+<button class="p-2 text-outline hover:text-primary disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-lg font-label-md text-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md">3</button>
+<button class="p-2 text-outline hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom NavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-md bg-surface-container-lowest border-t border-outline-variant shadow-lg z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Vehículos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Income</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-md text-label-md">More</span>
+</a>
+</nav>
+<!-- FAB for quick action -->
+<button class="fixed bottom-20 right-6 md:bottom-10 md:right-10 w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<script>
+        // Simple search interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+
+        // Hover effect for table rows
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('button').classList.remove('opacity-0');
+            });
+        });
+    </script>
+</body></html>

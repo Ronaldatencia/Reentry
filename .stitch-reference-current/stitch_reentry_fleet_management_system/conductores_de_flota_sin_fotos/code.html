@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conductores | Reentry Fleet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#0b513d",
+                        "primary-container": "#064e3b",
+                        "outline": "#707974",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary": "#1f2f43",
+                        "primary-fixed": "#b0f0d6",
+                        "error": "#ba1a1a",
+                        "primary": "#003527",
+                        "on-primary-container": "#80bea6",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#2b6954",
+                        "on-tertiary-container": "#a2b2cb",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-surface-variant": "#404944",
+                        "secondary": "#855300",
+                        "on-secondary-container": "#684000",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#fea619",
+                        "outline-variant": "#bfc9c3",
+                        "on-primary-fixed": "#002117",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "inverse-primary": "#95d3ba",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-background": "#191c1e",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container": "#eceef0",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#35455a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "secondary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "primary-fixed-dim": "#95d3ba",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "container-max": "1440px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "data-mono": ["JetBrains Mono"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-md-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .driver-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Navigation Drawer (Desktop Sidebar) -->
+<aside class="hidden md:flex flex-col h-full w-sidebar-width fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-md z-40 py-xl">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-secondary-container">Reentry Fleet</h1>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-body-md text-body-md">Vehicles</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-fixed-dim text-on-primary-fixed border-l-4 border-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Drivers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Income</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Expenses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md text-body-md">Documents</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="md:ml-sidebar-width h-16 flex justify-between items-center px-md w-full bg-surface-container-lowest dark:bg-surface-container-high border-b border-outline-variant dark:border-outline shadow-sm sticky top-0 z-30">
+<div class="flex items-center gap-sm">
+<button class="md:hidden p-sm rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<h2 class="font-title-lg text-title-lg text-primary dark:text-primary-fixed">Conductores</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary text-body-sm font-body-sm w-64" placeholder="Buscar conductor..." type="text"/>
+</div>
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary font-bold text-label-md">
+                AD
+            </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:ml-sidebar-width p-lg pb-32">
+<!-- Header Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md mb-lg">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Gestión de Personal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Listado oficial de conductores y vigencia de licencias.</p>
+</div>
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg flex items-center gap-sm shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label-md text-label-md">NUEVO CONDUCTOR</span>
+</button>
+</div>
+<!-- Filter Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total</p>
+<p class="font-headline-sm text-headline-sm">124 Conductores</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Vencimientos</p>
+<p class="font-headline-sm text-headline-sm">8 Próximos</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Suspendidos</p>
+<p class="font-headline-sm text-headline-sm">3 Inactivos</p>
+</div>
+</div>
+</div>
+<!-- Drivers Table/Grid -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant uppercase">Conductor</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant uppercase">Documento ID</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant uppercase">Licencia</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant uppercase">Estado</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant uppercase text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Driver 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary font-bold text-label-md border border-outline-variant">AM</div>
+<div>
+<p class="font-title-lg text-title-lg leading-tight">Alejandro Morales</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ruta Nacional Norte</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="font-data-mono text-data-mono text-on-surface">CC 1.023.445.882</span>
+</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="font-data-mono text-data-mono text-on-surface">LIC-554432-B</span>
+<div class="flex items-center gap-xs mt-1 text-error">
+<span class="material-symbols-outlined text-[14px]" data-icon="event_busy">event_busy</span>
+<span class="font-label-md text-label-md">Vence: 12/08/2024</span>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-on-primary-fixed-variant"></span>
+                                    Activo
+                                </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Driver 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-bold text-label-md border border-outline-variant">BQ</div>
+<div>
+<p class="font-title-lg text-title-lg leading-tight">Beatriz Quintana</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Operaciones Urbanas</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="font-data-mono text-data-mono text-on-surface">CC 52.331.009</span>
+</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="font-data-mono text-data-mono text-on-surface">LIC-882103-C</span>
+<div class="flex items-center gap-xs mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Vence: 15/11/2026</span>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-on-primary-fixed-variant"></span>
+                                    Activo
+                                </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Driver 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error font-bold text-label-md border border-outline-variant">CR</div>
+<div>
+<p class="font-title-lg text-title-lg leading-tight">Carlos Ruiz P.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mantenimiento de Flota</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="font-data-mono text-data-mono text-on-surface">CC 79.112.553</span>
+</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="font-data-mono text-data-mono text-on-surface">LIC-001292-A</span>
+<div class="flex items-center gap-xs mt-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="notification_important">notification_important</span>
+<span class="font-label-md text-label-md">Vence: 20/09/2024</span>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                    Suspendido
+                                </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="bg-secondary-container text-on-secondary px-3 py-1 rounded font-label-md text-label-md hover:opacity-90 transition-opacity">
+                                    RENOVAR
+                                </button>
+</td>
+</tr>
+<!-- Driver 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-label-md border border-outline-variant">DS</div>
+<div>
+<p class="font-title-lg text-title-lg leading-tight">David Santamaría</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mensajería Local</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="font-data-mono text-data-mono text-on-surface">CC 1.110.455.221</span>
+</td>
+<td class="px-md py-md">
+<div class="flex flex-col">
+<span class="font-data-mono text-data-mono text-on-surface">LIC-339910-B</span>
+<div class="flex items-center gap-xs mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Vence: 04/01/2028</span>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-on-primary-fixed-variant"></span>
+                                    Activo
+                                </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-md py-md flex items-center justify-between bg-surface-container-low border-t border-outline-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mostrando 1-4 de 124 conductores</p>
+<div class="flex gap-xs">
+<button class="p-2 rounded hover:bg-surface-container-high transition-colors text-on-surface-variant disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-md text-label-md">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-md text-label-md">3</button>
+<button class="p-2 rounded hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-md bg-surface-container-lowest dark:bg-surface-container-high border-t border-outline-variant dark:border-outline shadow-lg z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Income</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-md text-label-md">More</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual (Mobile Only) -->
+<button class="md:hidden fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</button>
+</body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Nuevo Ingreso - Reentry</title>
+<!-- Google Fonts: Hanken Grotesk for primary UI & JetBrains Mono for data -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f7f9fb",
+                    "secondary": "#855300",
+                    "primary": "#003527",
+                    "secondary-fixed": "#ffddb8",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#80bea6",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-secondary-container": "#684000",
+                    "tertiary": "#1f2f43",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "on-secondary-fixed": "#2a1700",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-tertiary-container": "#a2b2cb",
+                    "surface-tint": "#2b6954",
+                    "on-primary-fixed": "#002117",
+                    "surface-container": "#eceef0",
+                    "surface-variant": "#e0e3e5",
+                    "on-background": "#191c1e",
+                    "tertiary-container": "#35455a",
+                    "inverse-primary": "#95d3ba",
+                    "primary-fixed": "#b0f0d6",
+                    "surface-bright": "#f7f9fb",
+                    "on-surface-variant": "#404944",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-dim": "#d8dadc",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#95d3ba",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "background": "#f7f9fb",
+                    "secondary-container": "#fea619",
+                    "primary-container": "#064e3b",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#bfc9c3",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-fixed-variant": "#0b513d",
+                    "outline": "#707974",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-high": "#e6e8ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "lg": "24px",
+                    "sidebar-width": "260px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "xl": "40px",
+                    "container-max": "1440px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-md-mobile": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "data-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tap-highlight-transparent {
+            -webkit-tap-highlight-color: transparent;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #003527;
+            box-shadow: 0 0 0 1px #003527;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Transactional Screen: Full-Screen Modal Layout (Mobile Optimized) -->
+<div class="min-h-screen flex flex-col bg-surface overflow-x-hidden">
+<!-- Header - Fixed Top Bar (TopAppBar Contextual Adaptation) -->
+<header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface px-md flex items-center justify-between border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full active:bg-surface-variant transition-colors tap-highlight-transparent">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+<h1 class="font-headline-md-mobile text-headline-md-mobile text-on-surface tracking-tight">Nuevo Ingreso</h1>
+</div>
+<button class="text-primary font-title-lg px-md h-10 flex items-center active:opacity-70 transition-opacity">
+                Guardar
+            </button>
+</header>
+<!-- Main Form Canvas -->
+<main class="flex-grow pt-20 pb-lg px-md w-full max-w-lg mx-auto">
+<!-- Progress / Info Bar -->
+<div class="mb-lg p-md bg-primary-container/10 border border-primary-container/20 rounded-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-body-sm text-on-primary-fixed-variant">Complete los detalles del ingreso para el control de flota.</p>
+</div>
+<!-- Form Content -->
+<form action="#" class="space-y-lg" method="POST">
+<!-- Amount Section (Highlighted) -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="monto">Monto del Ingreso</label>
+<div class="relative group">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-headline-md font-headline-md text-primary">$</span>
+<input class="w-full bg-white border border-outline-variant rounded-xl py-4 pl-10 pr-md font-display-lg text-display-lg text-primary placeholder:text-outline-variant transition-all focus:border-primary focus:ring-1 focus:ring-primary shadow-sm" id="monto" inputmode="decimal" name="monto" placeholder="0.00" required="" type="number"/>
+</div>
+</div>
+<!-- Vehicle Select -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="vehiculo">Vehículo</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg py-3 px-md appearance-none text-body-md focus:border-primary shadow-sm" id="vehiculo" name="vehiculo" required="">
+<option disabled="" selected="" value="">Seleccionar vehículo</option>
+<option value="v1">Volvo FH16 - [ABC-1234]</option>
+<option value="v2">Scania R450 - [XYZ-7890]</option>
+<option value="v3">Mercedes Actros - [FLE-4422]</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Driver Select -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="conductor">Conductor</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg py-3 px-md appearance-none text-body-md focus:border-primary shadow-sm" id="conductor" name="conductor" required="">
+<option disabled="" selected="" value="">Seleccionar conductor</option>
+<option value="c1">Carlos Mendoza</option>
+<option value="c2">Andrés Gutiérrez</option>
+<option value="c3">Lucía Fernández</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">person</span>
+</div>
+</div>
+<!-- Date & Payment Method Grid -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Date -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="fecha">Fecha</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg py-3 px-md text-body-md focus:border-primary shadow-sm" id="fecha" name="fecha" type="date" value="2023-10-27"/>
+</div>
+<!-- Payment Method -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="metodo">Método de Pago</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg py-3 px-md appearance-none text-body-md focus:border-primary shadow-sm" id="metodo" name="metodo" required="">
+<option value="efectivo">Efectivo</option>
+<option value="transferencia">Transferencia</option>
+<option value="tarjeta">Tarjeta</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Concept / Description -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="concepto">Concepto / Referencia</label>
+<textarea class="w-full bg-white border border-outline-variant rounded-lg py-3 px-md text-body-md placeholder:text-outline-variant focus:border-primary shadow-sm resize-none" id="concepto" name="concepto" placeholder="Ej. Flete regional Bogota-Medellin" rows="3"></textarea>
+</div>
+<!-- Attachments (Optional UI addition for modern administrative feel) -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Comprobante (Opcional)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer active:scale-[0.98] duration-150">
+<span class="material-symbols-outlined text-primary text-[32px] mb-xs">add_a_photo</span>
+<span class="text-body-sm text-on-surface-variant">Subir foto o documento</span>
+</div>
+</div>
+</form>
+</main>
+<!-- Footer Actions - Fixed Bottom (Mobile Primary Action) -->
+<footer class="mt-auto px-md py-lg bg-surface border-t border-outline-variant flex flex-col gap-md">
+<button class="w-full h-14 bg-primary text-on-primary font-title-lg rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+                Guardar Ingreso
+            </button>
+<button class="w-full h-12 bg-white text-error font-title-lg border border-error/20 rounded-xl flex items-center justify-center active:bg-error/5 transition-colors">
+                Cancelar y Salir
+            </button>
+</footer>
+</div>
+<!-- Keyboard Spacer (Visual cue for mobile keyboards) -->
+<div class="h-[env(safe-area-inset-bottom)] bg-surface"></div>
+<script>
+        // Simple Interaction: Amount formatting and Focus styling
+        const amountInput = document.getElementById('monto');
+        
+        amountInput.addEventListener('focus', () => {
+            amountInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+
+        amountInput.addEventListener('blur', () => {
+            amountInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+
+        // Set default date to today
+        window.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('fecha');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            dateInput.value = `${year}-${month}-${day}`;
+        });
+    </script>
+</body></html>
