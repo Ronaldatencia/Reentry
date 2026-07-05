@@ -16,7 +16,7 @@ Abre `index.html` en el navegador o sirve la carpeta con cualquier servidor loca
 6. Ejecutar como: `Yo`.
 7. Quien tiene acceso: `Cualquier usuario con el enlace`.
 8. Copia la URL de la aplicacion web.
-9. Si cambia la URL, actualiza `DEFAULT_API_ENDPOINT` en `index.html`.
+9. Si cambia la URL, actualiza `SHEETS_SCRIPT_ENDPOINT` en `index.html` y `SCRIPT_URL` en `api/sheets.js`.
 
 La app lee y escribe por medio de Apps Script en estas hojas del libro: `Configuracion`, `Vehiculos`, `Conductores`, `Ingresos`, `Gastos`, `Deudas`, `Abonos` y `Documentos`.
 
@@ -32,4 +32,4 @@ La app lee y escribe por medio de Apps Script en estas hojas del libro: `Configu
 
 ## Nota
 
-La URL actual de Apps Script queda fija en `index.html`, por eso la app publicada en Vercel no depende de la configuracion local del navegador.
+La app publicada en Vercel usa `/api/sheets` como puente interno hacia Apps Script. Por eso la conexion queda compartida para computador y movil, sin depender de la configuracion local de cada navegador.
