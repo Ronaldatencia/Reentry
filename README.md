@@ -16,9 +16,9 @@ Abre `index.html` en el navegador o sirve la carpeta con cualquier servidor loca
 6. Ejecutar como: `Yo`.
 7. Quien tiene acceso: `Cualquier usuario con el enlace`.
 8. Copia la URL de la aplicacion web.
-9. En Reentry, entra a `Configuracion`, pega la URL en `API de Google Sheets` y guarda.
+9. Si cambia la URL, actualiza `DEFAULT_API_ENDPOINT` en `index.html`.
 
-La app lee y escribe en estas hojas normalizadas: `settings`, `vehicles`, `drivers`, `incomes`, `expenses`, `debts`, `pays` y `docs`.
+La app lee y escribe por medio de Apps Script en estas hojas del libro: `Configuracion`, `Vehiculos`, `Conductores`, `Ingresos`, `Gastos`, `Deudas`, `Abonos` y `Documentos`.
 
 ## Publicar demo en Vercel
 
@@ -32,4 +32,4 @@ La app lee y escribe en estas hojas normalizadas: `settings`, `vehicles`, `drive
 
 ## Nota
 
-Si no se configura la URL de Apps Script, la app conserva los cambios localmente en el navegador hasta que se conecte el backend.
+La URL actual de Apps Script queda fija en `index.html`, por eso la app publicada en Vercel no depende de la configuracion local del navegador.
