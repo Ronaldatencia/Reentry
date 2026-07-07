@@ -78,10 +78,11 @@ body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,
   #primary{grid-column:1/-1!important;justify-self:start;min-height:48px!important;padding:0 20px!important}
   .side{display:flex!important;position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(304px,86vw)!important;height:100vh!important;z-index:33!important;transform:translateX(-110%)!important;transition:transform .22s ease!important;box-shadow:18px 0 44px rgba(16,30,26,.24)!important}
   .side.open{transform:translateX(0)!important}
+  .side .nav{display:grid!important;grid-template-columns:1fr!important;gap:4px!important;overflow:visible!important;padding:0!important}
   .drawerBackdrop{position:fixed!important;inset:0!important;background:rgba(10,18,16,.42)!important;z-index:32!important}
   .drawerBackdrop.open{display:block!important}
   .shell.collapsed .brand div:last-child,.shell.collapsed .nav button:not(.on){font-size:inherit!important}
-  .shell.collapsed .nav button,.side .nav button{justify-content:flex-start!important;flex-direction:row!important;text-align:left!important;font-size:14px!important;padding:11px 12px!important}
+  .shell.collapsed .nav button,.side .nav button{width:100%!important;min-width:0!important;justify-content:flex-start!important;flex-direction:row!important;text-align:left!important;font-size:14px!important;padding:11px 12px!important}
   .sideToggle{display:none!important}
 }
 @media(max-width:480px){
