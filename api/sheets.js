@@ -1,6 +1,6 @@
-const SCRIPT_URL =
+﻿const SCRIPT_URL =
   process.env.REENTRY_SHEETS_SCRIPT_URL ||
-  'https://script.google.com/macros/s/AKfycbzKwMUN6dRnyxyeNRDVSo8jYyD1HG6vdI5Bnvh1iVX-NO4lmsvmLUdyOqUS7MyFYIAouA/exec';
+  'https://script.google.com/macros/s/AKfycbxIrTrNmDltkomEiunQEzHaV1Lwpqn5KY6BE9NXMTwXBS4SeP3rEuZ42NFVni7Tp_IbNQ/exec';
 
 function buildScriptUrl(queryParams) {
   const query = new URLSearchParams(queryParams || {});
@@ -36,3 +36,5 @@ module.exports = async function handler(req, res) {
     res.status(502).json({ ok: false, error: String(error && error.message || error) });
   }
 };
+
+

@@ -40,6 +40,11 @@ const TABLES = {
       placa: 'plate',
       conductor: 'driver',
       valor: 'value',
+      tarifaEsperada: 'expected',
+      tarifa: 'tariff',
+      periodicidad: 'periodicity',
+      saldoPendiente: 'balance',
+      estadoPago: 'payStatus',
       metodo: 'method',
       notas: 'notes',
       usuario: 'user',
@@ -106,6 +111,50 @@ const TABLES = {
       vencimiento: 'expires',
       valor: 'value'
     }
+  },
+  savings: {
+    sheet: 'Ahorros',
+    key: 'id',
+    columns: {
+      id: 'id',
+      ingreso: 'income',
+      fecha: 'date',
+      placa: 'plate',
+      conductor: 'driver',
+      valor: 'value',
+      notas: 'notes',
+      usuario: 'user',
+      creado: 'created'
+    }
+  },
+  savingReturns: {
+    sheet: 'DevolucionesAhorro',
+    key: 'id',
+    columns: {
+      id: 'id',
+      fecha: 'date',
+      conductor: 'driver',
+      valor: 'value',
+      notas: 'notes',
+      usuario: 'user',
+      creado: 'created'
+    }
+  },
+  tariffs: {
+    sheet: 'TarifasVinculacion',
+    key: 'id',
+    columns: {
+      id: 'id',
+      placa: 'plate',
+      conductor: 'driver',
+      valor: 'value',
+      periodicidad: 'periodicity',
+      inicio: 'start',
+      fin: 'end',
+      estado: 'status',
+      notas: 'notes',
+      creado: 'created'
+    }
   }
 };
 
@@ -165,7 +214,7 @@ function readSettings_() {
 
 function readTable_(table) {
   const config = TABLES[table];
-  const sheet = getSheet_(config.sheet);
+  const sheet = getTableSheet_(config);
   const values = sheet.getDataRange().getDisplayValues();
   if (values.length < 2) return [];
   const headers = values[0].map(String);
@@ -196,7 +245,7 @@ function saveSettings_(settings) {
 
 function upsert_(table, row) {
   const config = TABLES[table];
-  const sheet = getSheet_(config.sheet);
+  const sheet = getTableSheet_(config);
   const headers = headers_(sheet);
   const key = String(row[config.key] || '');
   if (!key) throw new Error('Registro sin identificador');
@@ -211,7 +260,7 @@ function upsert_(table, row) {
 
 function remove_(table, row) {
   const config = TABLES[table];
-  const sheet = getSheet_(config.sheet);
+  const sheet = getTableSheet_(config);
   const headers = headers_(sheet);
   const key = String(row[config.key] || row.id || row.plate || '');
   const rowNumber = findRow_(sheet, headers, config, key);
@@ -233,6 +282,19 @@ function findRow_(sheet, headers, config, key) {
 
 function headers_(sheet) {
   return sheet.getRange(1, 1, 1, sheet.getLastColumn()).getDisplayValues()[0].map(String);
+}
+
+function getTableSheet_(config) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(config.sheet);
+  if (!sheet) {
+    sheet = ss.insertSheet(config.sheet);
+    sheet.getRange(1, 1, 1, Object.keys(config.columns).length).setValues([Object.keys(config.columns)]);
+  }
+  if (sheet.getLastRow() === 0 || sheet.getLastColumn() === 0) {
+    sheet.getRange(1, 1, 1, Object.keys(config.columns).length).setValues([Object.keys(config.columns)]);
+  }
+  return sheet;
 }
 
 function getSheet_(name) {
