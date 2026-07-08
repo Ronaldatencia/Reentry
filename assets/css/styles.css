@@ -117,4 +117,6 @@ body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,
 .pager{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);background:#fff;flex-wrap:wrap;color:var(--muted);font-size:13px;font-weight:800}.pager strong{color:var(--primary);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.pager button[disabled]{opacity:.45;cursor:not-allowed;transform:none!important}
 @media(max-width:620px){.pager{align-items:flex-start}.pager .row{width:100%;justify-content:space-between}.pager .row button{flex:1}}
 .vehicleSummary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:#fbfcfb}.homeVehicleSelect{min-width:260px}.vehicleHome .table table{min-width:1040px}
+.view:has(.vehicleHome)>.hero,.view:has(.vehicleHome)>.metrics{display:none}.vehicleHome th:nth-child(2),.vehicleHome td:nth-child(2),.vehicleHome th:nth-child(9),.vehicleHome td:nth-child(9){display:none}
+.vehicleHome tbody tr{cursor:pointer}.vehicleHome tbody tr:hover td{background:#eef5f1}
 @media(max-width:760px){.vehicleSummary{grid-template-columns:1fr}.homeVehicleSelect{width:100%;min-width:0}}
