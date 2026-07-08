@@ -215,19 +215,28 @@ function readSettings_() {
 function readTable_(table) {
   const config = TABLES[table];
   const sheet = getTableSheet_(config);
-  const values = sheet.getDataRange().getDisplayValues();
+  const range = sheet.getDataRange();
+  const values = range.getValues();
+  const displayValues = range.getDisplayValues();
   if (values.length < 2) return [];
-  const headers = values[0].map(String);
+  const headers = displayValues[0].map(String);
   return values.slice(1).filter(function(row) {
     return row.some(function(cell) { return cell !== ''; });
-  }).map(function(row) {
+  }).map(function(row, rowIndex) {
     const item = {};
     headers.forEach(function(header, index) {
       const key = config.columns[header] || header;
-      item[key] = row[index] || '';
+      item[key] = normalizeCell_(row[index], displayValues[rowIndex + 1][index]);
     });
     return item;
   });
+}
+
+function normalizeCell_(value, displayValue) {
+  if (value instanceof Date) {
+    return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  }
+  return value == null || value === '' ? '' : String(displayValue || value);
 }
 
 function saveSettings_(settings) {
