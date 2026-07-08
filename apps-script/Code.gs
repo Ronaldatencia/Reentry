@@ -158,6 +158,8 @@ const TABLES = {
   }
 };
 
+const DATE_FIELDS = ['date', 'issued', 'expires', 'start', 'end'];
+
 function doGet(e) {
   const action = (e.parameter.action || 'read').toLowerCase();
   if (action !== 'read') return json_({ ok: false, error: 'Accion no soportada' });
@@ -236,7 +238,7 @@ function normalizeCell_(value, displayValue) {
   if (value instanceof Date) {
     return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
   }
-  return value == null || value === '' ? '' : String(displayValue || value);
+  return normalizeDateValue_(displayValue || value) || (value == null || value === '' ? '' : String(displayValue || value));
 }
 
 function saveSettings_(settings) {
@@ -256,15 +258,77 @@ function upsert_(table, row) {
   const config = TABLES[table];
   const sheet = getTableSheet_(config);
   const headers = headers_(sheet);
+  formatDateColumns_(sheet, headers, config);
   const key = String(row[config.key] || '');
   if (!key) throw new Error('Registro sin identificador');
   const rowNumber = findRow_(sheet, headers, config, key);
   const values = headers.map(function(header) {
     const englishKey = config.columns[header] || header;
-    return row[englishKey] == null ? '' : row[englishKey];
+    return normalizeFieldValue_(englishKey, row[englishKey]);
   });
   if (rowNumber) sheet.getRange(rowNumber, 1, 1, headers.length).setValues([values]);
   else sheet.appendRow(values);
+}
+
+function normalizeFieldValue_(key, value) {
+  if (value == null || value === '') return '';
+  if (DATE_FIELDS.indexOf(key) >= 0) return normalizeDateValue_(value) || String(value);
+  return value;
+}
+
+function normalizeDateValue_(value) {
+  if (value == null || value === '') return '';
+  if (value instanceof Date) {
+    return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  }
+  const raw = String(value).trim();
+  if (!raw) return '';
+  const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (iso) return iso[1] + '-' + iso[2] + '-' + iso[3];
+  const parts = raw.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
+  if (!parts) return '';
+  let day = Number(parts[1]);
+  let month = Number(parts[2]);
+  let year = Number(parts[3]);
+  if (year < 100) year += 2000;
+  if (parts[1].length === 4) return '';
+  if (day <= 0 || month <= 0 || day > 31 || month > 12) return '';
+  return year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+}
+
+function formatDateColumns_(sheet, headers, config) {
+  DATE_FIELDS.forEach(function(field) {
+    const spanishHeader = Object.keys(config.columns).find(function(header) {
+      return config.columns[header] === field;
+    });
+    const column = headers.indexOf(spanishHeader) + 1;
+    if (column > 0) sheet.getRange(1, column, Math.max(1, sheet.getMaxRows()), 1).setNumberFormat('@');
+  });
+}
+
+function normalizeDatabaseDates() {
+  Object.keys(TABLES).forEach(function(table) {
+    const config = TABLES[table];
+    const sheet = getTableSheet_(config);
+    const range = sheet.getDataRange();
+    const values = range.getValues();
+    if (values.length < 2) return;
+    const headers = values[0].map(String);
+    formatDateColumns_(sheet, headers, config);
+    let changed = false;
+    for (let row = 1; row < values.length; row++) {
+      headers.forEach(function(header, index) {
+        const key = config.columns[header] || header;
+        if (DATE_FIELDS.indexOf(key) < 0) return;
+        const normalized = normalizeDateValue_(values[row][index]);
+        if (normalized && values[row][index] !== normalized) {
+          values[row][index] = normalized;
+          changed = true;
+        }
+      });
+    }
+    if (changed) range.setValues(values);
+  });
 }
 
 function remove_(table, row) {
