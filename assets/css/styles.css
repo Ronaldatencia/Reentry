@@ -115,8 +115,18 @@ body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,
 }
 .incomeDays{display:grid;gap:12px}.incomeDay{border:1px solid var(--line);border-radius:8px;background:#fbfcfb;padding:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.incomeDayHead{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px}.incomeDayHead strong{color:var(--primary);font-size:13px;text-transform:uppercase;letter-spacing:.05em}@media(max-width:620px){.incomeDay{grid-template-columns:1fr}}
 .pager{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);background:#fff;flex-wrap:wrap;color:var(--muted);font-size:13px;font-weight:800}.pager strong{color:var(--primary);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.pager button[disabled]{opacity:.45;cursor:not-allowed;transform:none!important}
+.syncBtn{width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;font-size:18px;line-height:1;text-transform:none!important;letter-spacing:0!important}
 @media(max-width:620px){.pager{align-items:flex-start}.pager .row{width:100%;justify-content:space-between}.pager .row button{flex:1}}
 .vehicleSummary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:#fbfcfb}.homeVehicleSelect{min-width:260px}.vehicleHome .table table{min-width:1040px}
 .view:has(.vehicleHome)>.hero,.view:has(.vehicleHome)>.metrics{display:none}.vehicleHome th:nth-child(2),.vehicleHome td:nth-child(2),.vehicleHome th:nth-child(9),.vehicleHome td:nth-child(9){display:none}
 .vehicleHome tbody tr{cursor:pointer}.vehicleHome tbody tr:hover td{background:#eef5f1}
 @media(max-width:760px){.vehicleSummary{grid-template-columns:1fr}.homeVehicleSelect{width:100%;min-width:0}}
+.modalRoot{z-index:60!important;overflow:auto!important}
+.modalRoot.open{display:flex!important}
+body:has(.modalRoot.open) .fab{display:none!important}
+.modal,.sheet{max-height:calc(100dvh - 32px)!important}
+@media(max-width:760px){
+  .modalRoot{align-items:flex-start!important;justify-content:center!important;padding:12px!important;padding-bottom:28px!important}
+  .modalRoot.sheetModal{align-items:flex-start!important}
+  .modal,.sheet{width:100%!important;max-height:calc(100dvh - 24px)!important;margin:0!important;border-radius:12px!important;overflow:auto!important}
+}
