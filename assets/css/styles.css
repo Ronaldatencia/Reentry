@@ -164,3 +164,7 @@ body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,
   .modalRoot.sheetModal{align-items:flex-start!important}
   .modal,.sheet{width:100%!important;max-height:calc(100dvh - 24px)!important;margin:0!important;border-radius:12px!important;overflow:auto!important}
 }
+
+
+
+.miniChart{display:grid;grid-template-columns:repeat(6,minmax(112px,1fr));gap:8px;align-items:stretch}.miniBar{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 10px;display:grid;gap:7px;min-width:0}.miniBar div{display:flex;align-items:baseline;justify-content:space-between;gap:8px}.miniBar b{font-size:10px;text-transform:uppercase;color:var(--muted);white-space:nowrap}.miniBar strong{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;color:var(--ink);white-space:nowrap}.miniBar span{height:5px;border-radius:999px;background:#edf3f0;overflow:hidden}.miniBar i{display:block;height:100%;border-radius:999px;background:var(--primary)}.miniBar.result i{background:var(--accent)}.miniBar.bad i{background:var(--bad)}@media(max-width:900px){.miniChart{display:flex;overflow-x:auto;padding-bottom:2px}.miniBar{flex:0 0 160px}}@media(max-width:620px){.miniChart{margin:0 -6px;padding-left:6px;padding-right:6px}.miniBar{flex-basis:148px;padding:7px 9px}.miniBar strong{font-size:11px}}
