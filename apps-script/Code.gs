@@ -1,3 +1,4 @@
+const APP_TIME_ZONE = 'America/Bogota';
 const SPREADSHEET_ID = '1laiseLDWvTFM9M6xFGIrhbTuwGx5zcVXzxPoK0YQ13g';
 
 const TABLES = {
@@ -236,7 +237,7 @@ function readTable_(table) {
 
 function normalizeCell_(value, displayValue) {
   if (value instanceof Date) {
-    return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+    return Utilities.formatDate(value, APP_TIME_ZONE, 'yyyy-MM-dd');
   }
   return normalizeDateValue_(displayValue || value) || (value == null || value === '' ? '' : String(displayValue || value));
 }
@@ -279,7 +280,7 @@ function normalizeFieldValue_(key, value) {
 function normalizeDateValue_(value) {
   if (value == null || value === '') return '';
   if (value instanceof Date) {
-    return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+    return Utilities.formatDate(value, APP_TIME_ZONE, 'yyyy-MM-dd');
   }
   const raw = String(value).trim();
   if (!raw) return '';

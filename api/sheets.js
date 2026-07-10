@@ -1,6 +1,6 @@
 ﻿const SCRIPT_URL =
   process.env.REENTRY_SHEETS_SCRIPT_URL ||
-  'https://script.google.com/macros/s/AKfycbxIrTrNmDltkomEiunQEzHaV1Lwpqn5KY6BE9NXMTwXBS4SeP3rEuZ42NFVni7Tp_IbNQ/exec';
+  'https://script.google.com/macros/s/AKfycbw1_6ggHh-XMmVKZveGtdGeCfUsjHVil3Wtrc0gKEVdQIi6le6jlLJsPIlecYEq69J_-w/exec';
 
 function buildScriptUrl(queryParams) {
   const query = new URLSearchParams(queryParams || {});
