@@ -50,8 +50,7 @@ const TABLES = {
       notas: 'notes',
       usuario: 'user',
       creado: 'created',
-      origen: 'source',
-      monto: 'amount'
+      origen: 'source'
     }
   },
   expenses: {
@@ -65,7 +64,6 @@ const TABLES = {
       concepto: 'concept',
       valor: 'value',
       proveedor: 'provider',
-      vencimiento: 'expires',
       notas: 'notes',
       usuario: 'user'
     }
@@ -96,8 +94,7 @@ const TABLES = {
       notas: 'notes',
       usuario: 'user',
       metodo: 'method',
-      creado: 'created',
-      placa: 'plate'
+      creado: 'created'
     }
   },
   docs: {
